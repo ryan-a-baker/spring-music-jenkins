@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Stage 1') {
             steps {
-                tanzu version
+                // Build with the cli
+                sh 'tanzu version'
             }
         }
     }
