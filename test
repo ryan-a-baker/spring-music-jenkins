@@ -3,7 +3,9 @@ pipeline {
     stages {
         stage('Stage 1') {
             steps {
-                // Build with the cli
+                withCredentials([string(credentialsId: TANZU_API_TOKEN_API, variable: 'TANZU_API_TOKEN_API')]) {
+                    sh('TANZU_API_TOKEN=$TANZU_API_TOKEN_API tanzu login')
+                }
                 sh 'tanzu build'
             }
         }
