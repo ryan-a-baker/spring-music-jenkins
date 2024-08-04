@@ -20,7 +20,7 @@ pipeline {
                 }
                 sh 'tanzu project use rbaker-project'
                 sh 'tanzu space use spring-music-stage'
-                sh 'ls'
+                sh 'tanzu deploy --from-build build'
             }
         }
     }
