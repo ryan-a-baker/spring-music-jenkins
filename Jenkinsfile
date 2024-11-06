@@ -10,7 +10,7 @@ pipeline {
                     sh('TANZU_API_TOKEN=$TANZU_API_TOKEN_API tanzu login')
                 }
                 sh 'tanzu project use rbaker-project'
-                sh 'tanzu build --output-dir build'
+                //sh 'tanzu build --output-dir build'
             }
         }
         stage('Deploy-Stage') {
