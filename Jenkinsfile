@@ -25,16 +25,16 @@ pipeline {
                 sh 'tanzu deploy -y --from-build build'
             }
         }
-        // stage('Deploy-Prod') {
-        //     steps {
-        //         withCredentials([string(credentialsId: 'TANZU_API_TOKEN', variable: 'TANZU_API_TOKEN_API')]) {
-        //             sh('TANZU_API_TOKEN=$TANZU_API_TOKEN_API tanzu login')
-        //         }
-        //         sh 'tanzu project use rbaker-project'
-        //         sh 'tanzu space use spring-music-prod'
-        //         sh 'sed -i "s|http-spring-music-stage|http-spring-music|g" .tanzu/config/k8sGatewayRoutes.yaml'
-        //         sh 'tanzu deploy -y --from-build build'
-        //     }
-        // }
+        stage('Deploy-Prod') {
+            steps {
+                withCredentials([string(credentialsId: 'TANZU_API_TOKEN', variable: 'TANZU_API_TOKEN_API')]) {
+                    sh('TANZU_API_TOKEN=$TANZU_API_TOKEN_API tanzu login')
+                }
+                sh 'tanzu project use rbaker-project'
+                sh 'tanzu space use spring-music-prod'
+                sh 'sed -i "s|http-spring-music-stage|http-spring-music|g" .tanzu/config/k8sGatewayRoutes.yaml'
+                sh 'tanzu deploy -y --from-build build'
+            }
+        }
     }
 }
