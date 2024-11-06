@@ -11,7 +11,7 @@ pipeline {
                 }
                 sh 'tanzu project use pm-demo'
                 sh 'ls'
-                //sh 'tanzu build --output-dir build'
+                sh 'tanzu build --output-dir build'
             }
         }
         // stage('Deploy-Stage') {
